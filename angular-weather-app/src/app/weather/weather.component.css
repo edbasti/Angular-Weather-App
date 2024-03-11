@@ -1,0 +1,19 @@
+.heading {
+  padding: 40px;
+}
+.mycontainer {
+  display: flex;
+  flex-wrap: wrap;
+  li {
+    list-style-type: none;
+  }
+}
+
+p {
+  margin: 5px;
+}
+
+.myRadioButtons {
+  display: flex;
+  justify-content: space-around;
+}

@@ -1,0 +1,35 @@
+<div class="heading">
+  <h2>
+    {{ city === "TOP" ? "Kansas" : "District of Columbia" }} Weather Forecast
+  </h2>
+  <select (change)="onChange($any($event.target).value)">
+    <option value="LWX">District of Columbia</option>
+    <option value="TOP">Kansas</option>
+  </select>
+</div>
+<app-line-chart [data]="myWeather"></app-line-chart>
+<div class="mycontainer">
+  <li *ngFor="let weather of myWeather; index as i">
+    <div class="card m-5" style="width: 20rem; height: 22rem">
+      <div class="card-header text-left">
+        {{ weather.day }}
+      </div>
+      <div class="card-body">
+        <img src="{{ weather.iconURL }}" alt="weather image" />
+        <p class="card-text mt-3">{{ weather.summary }}</p>
+
+        <p class="card-text mt-3">
+          Temperature: {{ weather.temperature | number : "1.0-0" }} °{{
+            weather.uom
+          }}
+        </p>
+        <p class="card-text">Wind Direction: {{ weather.windDirection }} hPa</p>
+        <p class="card-text">Wind Speed: {{ weather.windSpeed }} hPa</p>
+        <p class="card-text">Relative Humidity: {{ weather.humidity }} %</p>
+        <p class="card-text" *ngIf="weather.precipitation">
+          Probability of Precipitation: {{ weather.precipitation }} %
+        </p>
+      </div>
+    </div>
+  </li>
+</div>
